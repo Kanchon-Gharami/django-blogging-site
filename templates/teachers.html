@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+{% if teachers %}
+
+<div style="height: 30px;"></div>
+<h3 class="text-center">All Teachers</h3>
+<div style="height: 20px;"></div>
+
+<div class="col-xl-10 mx-auto">
+    <table class="table table-striped" id ="jsDataTableLib">
+        <thead>
+            <tr>
+                <th scope="col">username</th>
+                <th scope="col">Email</th>
+                <th scope="col">User Type</th>
+                <th scope="col">Varification Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in teachers %}
+            <tr>
+                <th scope="row">{{ i.username }}</th>
+                <td>{{ i.email }}</td>
+                <td>{{ i.userType }}</td>
+                <td>{{ i.isVarified }}</td>
+                {% if not i.isVarified %}
+                <td><a href="{% url 'app:approve' user_id=i.pk %}" class="btn btn-success">Approve</a></td>
+                {% else %}
+                <td><a href="{% url 'app:refuse' user_id=i.pk %}" class="btn btn-warning">Refuse</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endif %}
+
+
+{% if admins %}
+
+<div style="height: 30px;"></div>
+<h3 class="text-center">All Admins</h3>
+<div style="height: 20px;"></div>
+
+<div class="col-xl-10 mx-auto">
+    <table class="table table-striped" id ="jsDataTableLib">
+        <thead>
+            <tr>
+                <th scope="col">username</th>
+                <th scope="col">Email</th>
+                <th scope="col">User Type</th>
+                <th scope="col">Varification Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in admins %}
+            <tr>
+                <th scope="row">{{ i.username }}</th>
+                <td>{{ i.email }}</td>
+                <td>{{ i.userType }}</td>
+                <td>{{ i.isVarified }}</td>
+                {% if not i.isVarified %}
+                <td><a href="{% url 'app:approve' user_id=i.pk %}" class="btn btn-success">Approve</a></td>
+                {% else %}
+                <td><a href="{% url 'app:refuse' user_id=i.pk %}" class="btn btn-warning">Refuse</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endif %}
+
+
+
+
+{% endblock %}

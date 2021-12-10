@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+{% if blogs %}
+<div style="height: 20px;"></div>
+
+<div class="col-xl-10 mx-auto">
+    <img src="{{ blogs.picture.url }}" alt="Not Found" class="thumbnail my-2">
+    <h4>{{blogs.title}}</h4>
+    <div class="row m-0">
+        <small>Created at: {{ blogs.created_at }}</small>
+        <small class="ml-auto">Author: {{ blogs.author }}</small>
+    </div>
+    <hr>
+    <p>{{ blogs.body }}</p>
+</div>
+
+{% endif %}
+
+
+<style>
+    .thumbnail {
+        width: 40%;
+        height: auto;
+    }
+</style>
+
+
+{% endblock %}

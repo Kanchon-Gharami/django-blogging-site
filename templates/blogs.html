@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="col-xl-10 mx-auto">
+    <div style="height: 30px;"></div>
+    <div class="row m-0">
+        <h3 class="mx-auto">All blogs</h3>
+        <a href="{% url 'app:addBlog' %}" class="btn btn-info">Add Blog</a>
+    </div>
+    <div style="height: 20px;"></div>
+</div>
+
+{% if blogs %}
+
+<div class="col-xl-10 mx-auto">
+    <table class="table table-striped" id ="jsDataTableLib">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Author Rank</th>
+                
+                <th scope="col">Date Created</th>
+                <th scope="col">Read</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in blogs %}
+            <tr>
+                <th scope="row">{{ i.pk }}</th>
+                <td>{{ i.title }}</td>
+                <td>{{ i.author.username }}</td>
+                <td>{{ i.author.userType }}</td>
+                <td>{{ i.created_at }}</td>
+                <td> <a href="{% url 'app:blogDetails' blog_id=i.pk %}" class="btn btn-info">Go!</a> </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endif %}
+
+
+{% endblock %}

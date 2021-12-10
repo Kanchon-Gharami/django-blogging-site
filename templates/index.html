@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container-fluid mybg">
+
+    <div class="row">
+        <div class="col-xl-1"></div>
+        <div class="col-md-5" style="margin-top:160px;">
+            <div class="">
+                <h1 class="my-3">Welcome in our <strong>awsome <br>blogging site</strong></h1>
+                <h3 class="my-3 subtitle">Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</h3>
+                
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<style>
+    .mybg{
+        background-image: 
+        linear-gradient(to right, white 0%, white 35%, rgba(255, 255, 255, 0) 79%, rgba(255, 255, 255, 0) 100%),
+        url(" {% static 'imgs/bg1.jpg' %} ");
+        min-height: 575px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+    .subtitle{
+        font-size: 18px;
+        line-height: 1.5;
+        margin-bottom: 30px;
+        font-weight: 300;
+        font-family: "Poppins", Arial, sans-serif;
+        color: rgba(0, 0, 0, 0.5);
+    }
+    .mybtn{
+        background-color: #9bdf46;
+        color:white !important;
+        width:240px;
+        height:50px; 
+        border-radius:50px;
+        border: none !important;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    .mybtn:hover{
+        border: 2px solid #9bdf46 !important;
+        color: #8de225 !important;
+        background-color: white;
+    }
+</style>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="col-xl-8 mx-auto">
+    <div style="height: 30px;"></div>
+    <h3 class="text-center">Add blogs</h3>
+    <div style="height: 20px;"></div>
+
+
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" name="title" placeholder="Enter title">
+        </div>
+        <div class="form-group">
+            <label for="content">Body</label>
+            <textarea class="form-control" name="body" rows="5"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" class="form-control-file" name="picture">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
+    
+</div>
+
+
+
+{% endblock %}

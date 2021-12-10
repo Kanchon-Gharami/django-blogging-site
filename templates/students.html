@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+{% if students %}
+
+<div style="height: 30px;"></div>
+<h3 class="text-center">All Students</h3>
+<div style="height: 20px;"></div>
+
+<div class="col-xl-10 mx-auto">
+    <table class="table table-striped" id ="jsDataTableLib">
+        <thead>
+            <tr>
+                <th scope="col">username</th>
+                <th scope="col">Email</th>
+                <th scope="col">User Type</th>
+                <th scope="col">Varification Status</th>
+                {% if request.user.is_superuser %}
+                <th scope="col">Action</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in students %}
+            <tr>
+                <th scope="row">{{ i.username }}</th>
+                <td>{{ i.email }}</td>
+                <td>{{ i.userType }}</td>
+                <td>{{ i.isVarified }}</td>
+                {% if request.user.is_superuser %}
+                    {% if not i.isVarified %}
+                    <td><a href="{% url 'app:approve' user_id=i.pk %}" class="btn btn-success">Approve</a></td>
+                    {% else %}
+                    <td><a href="{% url 'app:refuse' user_id=i.pk %}" class="btn btn-warning">Refuse</a></td>
+                    {% endif %}
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endif %}
+
+
+{% endblock %}
